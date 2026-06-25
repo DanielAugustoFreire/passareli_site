@@ -1,0 +1,133 @@
+/* =============================================
+   SOBRE
+   ============================================= */
+.sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.sobre-visual {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.sobre-photos {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  height: 100%;
+  gap: 2px;
+}
+
+.sobre-photo-main,
+.sobre-photo-sec {
+  position: relative;
+  overflow: hidden;
+}
+
+.sobre-photo-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.sobre-photo-sec img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  filter: brightness(0.8);
+}
+
+.sobre-text {
+  padding: 100px 60px;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sobre-title {
+  font-size: clamp(38px, 4vw, 60px);
+  line-height: 0.95;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+
+.sobre-text p {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 14px;
+  line-height: 1.8;
+}
+
+.cref {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  width: fit-content;
+}
+
+.cref strong {
+  color: var(--blue);
+}
+
+.atuacao-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.atuacao-tag {
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.atuacao-tag:hover {
+  border-color: var(--blue);
+  background: rgba(59, 158, 255, 0.05);
+}
+
+.atuacao-tag::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+
+/* =============================================
+   RESPONSIVO — SOBRE
+   ============================================= */
+@media (max-width: 900px) {
+  .sobre {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-visual {
+    display: none;
+  }
+
+  .sobre-text {
+    padding: 80px 28px;
+  }
+}

@@ -1,0 +1,263 @@
+/* =============================================
+   RESET
+   ============================================= */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =============================================
+   VARIÁVEIS
+   ============================================= */
+:root {
+  --black:   #0a0a0a;
+  --surface: #111;
+  --card:    #1a1a1a;
+  --blue:    #3b9eff;
+  --blue-dim:#1a4f80;
+  --white:   #f5f5f0;
+  --muted:   #888;
+  --border:  #222;
+  --green:   #25D366;
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =============================================
+   TIPOGRAFIA
+   ============================================= */
+h1, h2, h3, .display {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* =============================================
+   UTILITÁRIOS
+   ============================================= */
+.text-blue {
+  color: var(--blue);
+}
+
+.section-label {
+  font-size: 11px;
+  color: var(--blue);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--blue);
+  display: block;
+  flex-shrink: 0;
+}
+
+.section-label--center {
+  justify-content: center;
+}
+
+.section-label--center::before {
+  display: none;
+}
+
+/* Acessibilidade: pular para o conteúdo */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--blue);
+  color: #000;
+  padding: 8px 16px;
+  border-radius: 0 0 4px 4px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* =============================================
+   BOTÕES
+   ============================================= */
+.btn-primary {
+  background: var(--blue);
+  color: #000;
+  padding: 15px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  padding: 15px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-outline:hover {
+  border-color: var(--blue);
+  background: rgba(59, 158, 255, 0.05);
+}
+
+.btn-wpp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--blue);
+  color: #000;
+  padding: 16px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.btn-wpp:hover {
+  opacity: 0.85;
+}
+
+.btn-wpp-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  padding: 16px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-wpp-outline:hover {
+  border-color: var(--blue);
+  background: rgba(59, 158, 255, 0.05);
+}
+
+.btn-cta-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--green);
+  color: #000;
+  padding: 20px 40px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: opacity 0.2s;
+}
+
+.btn-cta-main:hover {
+  opacity: 0.88;
+}
+
+/* =============================================
+   ANIMAÇÕES
+   ============================================= */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%       { transform: translate3d(0, -18px, 0) scale(1.04); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes signalPulse {
+  0%   { transform: scale(1);    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+  70%  { transform: scale(1.05); box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@keyframes signalRing {
+  0%   { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes ctaPulse {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-3px); }
+}
+
+@keyframes ctaGlow {
+  0%   { opacity: 0.3; transform: scale(1); }
+  50%  { opacity: 1;   transform: scale(1.02); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
+
+@keyframes ctaLabelPop {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-2px) scale(1.04); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes ctaHeadlinePop {
+  0%   { transform: translateY(0);    letter-spacing: 0; }
+  35%  { transform: translateY(-4px); letter-spacing: -0.03em; }
+  100% { transform: translateY(0);    letter-spacing: 0; }
+}
+
+@keyframes ctaButtonPulse {
+  0%   { transform: scale(0.96); }
+  60%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}

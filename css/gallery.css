@@ -1,0 +1,446 @@
+/* =============================================
+   MARQUEE
+   ============================================= */
+.marquee-wrap {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 14px 0;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-item {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.marquee-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+
+/* =============================================
+   GALERIA
+   ============================================= */
+.galeria {
+  background:
+    radial-gradient(circle at top, rgba(59, 158, 255, 0.08), transparent 44%),
+    var(--black);
+  padding: 110px 0 0;
+}
+
+.galeria-header {
+  padding: 0 60px 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.galeria-header h2 {
+  font-size: clamp(36px, 5vw, 72px);
+  color: var(--white);
+  line-height: 0.95;
+}
+
+.galeria-header p {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 260px;
+  text-align: right;
+  line-height: 1.6;
+}
+
+.galeria-stage {
+  position: relative;
+  padding: 0 60px 40px;
+}
+
+.galeria-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.galeria-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.galeria-track {
+  display: flex;
+  gap: 18px;
+  padding: 22px;
+  width: max-content;
+  min-width: 100%;
+}
+
+.galeria-item {
+  position: relative;
+  flex: 0 0 clamp(320px, 52vw, 760px);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #111;
+  isolation: isolate;
+  box-shadow:
+    0 18px 34px rgba(0, 0, 0, 0.26),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  scroll-snap-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+.galeria-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.galeria-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.28) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease, filter 0.4s ease;
+  filter: grayscale(1) brightness(0.65);
+}
+
+.galeria-item.is-active img {
+  filter: none;
+  transform: scale(1.03);
+}
+
+.galeria-item:hover img {
+  filter: grayscale(0.15) brightness(0.95);
+}
+
+.galeria-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.galeria-counter {
+  color: #d2bea0;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.galeria-controls {
+  display: flex;
+  gap: 10px;
+}
+
+/* =============================================
+   BOTÕES E DOTS DE CARROSSEL (compartilhado)
+   ============================================= */
+.carousel-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  border: 1px solid rgba(240, 228, 207, 0.18);
+  background: linear-gradient(180deg, rgba(59, 40, 21, 0.92), rgba(28, 19, 11, 0.96));
+  color: #f8f1e6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carousel-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, rgba(73, 52, 31, 0.96), rgba(37, 25, 15, 0.98));
+  border-color: rgba(240, 228, 207, 0.3);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-btn svg {
+  width: 18px;
+  height: 18px;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.35));
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(210, 190, 160, 0.35);
+  cursor: pointer;
+  transition: width 0.25s ease, background 0.25s ease;
+}
+
+.carousel-dot.is-active {
+  width: 28px;
+  border-radius: 999px;
+  background: #d2bea0;
+}
+
+/* =============================================
+   ANTES E DEPOIS
+   ============================================= */
+.antesdepois {
+  padding: 100px 60px;
+  background: var(--surface);
+}
+
+.antesdepois-header {
+  margin-bottom: 34px;
+}
+
+.antesdepois-header h2 {
+  font-size: clamp(36px, 5vw, 72px);
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.antesdepois-header p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.antesdepois-stage {
+  position: relative;
+}
+
+.antesdepois-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  border: 1px solid rgba(240, 228, 207, 0.1);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.antesdepois-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.antesdepois-track {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.antesdepois-item {
+  flex: 0 0 280px;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.antesdepois-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.antesdepois-item:hover img {
+  transform: scale(1.01);
+}
+
+.antesdepois-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.antesdepois-counter {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.antesdepois-controls {
+  display: flex;
+  gap: 10px;
+}
+
+/* =============================================
+   RESPONSIVO — GALERIA E ANTES/DEPOIS
+   ============================================= */
+@media (max-width: 900px) {
+  .galeria {
+    padding-top: 76px;
+  }
+
+  .galeria-header {
+    padding: 0 28px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .galeria-header p {
+    text-align: left;
+  }
+
+  .galeria-stage {
+    padding: 0 0 26px;
+  }
+
+  .galeria-viewport {
+    border-radius: 22px;
+  }
+
+  .galeria-track {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .galeria-item {
+    flex: 0 0 82vw;
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+  }
+
+  .galeria-item img {
+    filter: brightness(0.9) saturate(0.95);
+    object-position: center top;
+  }
+
+  .galeria-nav {
+    padding: 0 28px;
+  }
+
+  .galeria-counter {
+    display: none;
+  }
+
+  .galeria-controls {
+    margin-left: auto;
+  }
+
+  .carousel-dots {
+    padding: 12px 0 0;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .antesdepois {
+    padding: 78px 28px 86px;
+  }
+
+  .antesdepois-header {
+    margin-bottom: 28px;
+  }
+
+  .antesdepois-viewport {
+    border-radius: 22px;
+  }
+
+  .antesdepois-track {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .antesdepois-item {
+    flex: 0 0 84vw;
+  }
+
+  .antesdepois-item img {
+    height: auto;
+    object-fit: initial;
+  }
+
+  .antesdepois-nav {
+    padding: 0;
+  }
+
+  .antesdepois-counter {
+    display: none;
+  }
+
+  .antesdepois-controls {
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 901px) {
+  .galeria-viewport {
+    margin-inline: auto;
+  }
+
+  .galeria-track {
+    padding: 28px;
+  }
+
+  .galeria-item {
+    flex-basis: min(64vw, 980px);
+    aspect-ratio: 16 / 9;
+    border-radius: 26px;
+  }
+
+  .galeria-header p {
+    max-width: 310px;
+  }
+
+  .antesdepois-track {
+    padding: 28px;
+  }
+
+  .antesdepois-item {
+    flex-basis: min(30vw, 410px);
+    aspect-ratio: 3 / 4;
+    border-radius: 26px;
+  }
+}
