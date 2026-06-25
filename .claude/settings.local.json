@@ -5,7 +5,8 @@
       "Bash(ls \"c:\\\\Users\\\\chris\\\\Downloads\\\\DDD\\\\PASSA\\\\mateus\\\\mateus\\\\\")",
       "Read(//c/Users/chris/Downloads/DDD/PASSA/mateus/**)",
       "WebFetch(domain:danielaugustofreire.github.io)",
-      "WebFetch(domain:api.github.com)"
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ],
     "additionalDirectories": [
       "c:\\Users\\chris\\Downloads\\DDD\\PASSA\\mateus\\mateus"

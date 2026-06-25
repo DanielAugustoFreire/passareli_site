@@ -152,7 +152,7 @@
 
 .catalogo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
@@ -161,21 +161,110 @@
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, border-color 0.25s;
 }
 
 .produto-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  border-color: rgba(59, 158, 255, 0.35);
 }
 
-.produto-card img {
-  width: 100%;
-  display: block;
+/* Cabeçalho colorido do card */
+.produto-header {
+  padding: 14px 20px;
+  background: rgba(59, 158, 255, 0.07);
+  border-bottom: 1px solid rgba(59, 158, 255, 0.12);
 }
 
-.produto-card h3 {
-  padding: 20px;
-  text-align: center;
+.produto-header--free {
+  background: rgba(37, 211, 102, 0.07);
+  border-bottom-color: rgba(37, 211, 102, 0.12);
+}
+
+.produto-header--partner {
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.produto-tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.produto-header--free .produto-tag {
+  color: var(--green);
+}
+
+.produto-header--partner .produto-tag {
+  color: var(--muted);
+}
+
+/* Corpo do card */
+.produto-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 20px 20px;
+}
+
+.produto-name {
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 10px;
+  line-height: 1.15;
+}
+
+.produto-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.produto-coupon {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.produto-coupon strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.produto-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--blue);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: gap 0.2s, opacity 0.2s;
+  margin-top: auto;
+}
+
+.produto-link--free {
+  color: var(--green);
+}
+
+.produto-link:hover {
+  gap: 10px;
+  opacity: 0.85;
 }
 
 /* =============================================
@@ -227,6 +316,12 @@
     padding: 80px 28px;
   }
 
+  .catalogo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
   .catalogo-grid {
     grid-template-columns: 1fr;
   }
